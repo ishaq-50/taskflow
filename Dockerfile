@@ -52,5 +52,8 @@ COPY --from=builder /app/client/dist ./client/dist
 # Expose port
 EXPOSE 3001
 
-# Run migrations and start server
-CMD ["sh", "-c", "cd server && npx prisma migrate deploy && cd .. && node server/dist/server.js"]
+# Set environment
+ENV NODE_ENV=production
+
+# Run migrations (if DATABASE_URL exists) and start server
+CMD ["sh", "-c", "if [ -z \"$DATABASE_URL\" ]; then echo 'DATABASE_URL not set, skipping migrations'; else cd server && npx prisma migrate deploy || true && cd ..; fi && node server/dist/server.js"]
