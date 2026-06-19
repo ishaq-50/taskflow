@@ -1,0 +1,17 @@
+# Replit configuration for TaskFlow
+
+# Run the full-stack app
+run = "npm install --prefix client && npm install --prefix server && npm run build --prefix client && npm run build --prefix server && node server/dist/server.js"
+
+# Use Node.js environment
+language = "nodejs"
+
+# Allow interactive input
+interactive = true
+
+[env]
+# Set Node version
+NODE_ENV = "production"
+PORT = "3001"
+DATABASE_URL = "file:./dev.db"
+CLIENT_URL = "https://$REPLIT_SLUG.$REPLIT_OWNER.repl.co"
