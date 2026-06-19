@@ -1,7 +1,6 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "server/dist",
-  "installCommand": "npm install",
+  "buildCommand": "npm install --prefix client && npm install --prefix server && npm run build --prefix client && npm run build --prefix server",
+  "outputDirectory": "client/dist",
   "env": {
     "NODE_ENV": "production"
   }
